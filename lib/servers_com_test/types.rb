@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "dry/types"
+require 'dry/types'
 
 module ServersComTest
   Types = Dry.Types
 
+  # Define your custom types here
   module Types
-    # Define your custom types here
   end
 end
