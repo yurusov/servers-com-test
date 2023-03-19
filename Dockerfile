@@ -10,6 +10,7 @@ RUN bundle install
 FROM ruby:3.2.0-alpine as runner
 
 WORKDIR /app
+RUN apk add --no-cache postgresql-dev
 COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
 COPY . .
 EXPOSE 2300

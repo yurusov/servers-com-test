@@ -1,5 +1,10 @@
 # ServersComTest
 
+[![Build](https://github.com/yurusov/servers-com-test/actions/workflows/docker-build.yml/badge.svg)](https://github.com/yurusov/servers-com-test/actions/workflows/docker-build.yml)
+[![Tests](https://github.com/yurusov/servers-com-test/actions/workflows/docker-tests.yml/badge.svg)](https://github.com/yurusov/servers-com-test/actions/workflows/docker-tests.yml)
+
+
+
 Предположим, нам нужна система мониторинга доступности IP-адресов. Напишем небольшое приложение, которое позволит регистрировать и удалять IP-адреса, а также выполнять проверку их доступности, где используя результаты проверки, мы можем выполнить расчет статистики.
 
 Приложение имеет следующие вызовы:

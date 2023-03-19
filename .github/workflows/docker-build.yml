@@ -68,16 +68,3 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-  run-test-job:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
-    container:
-      image: harbor.yurusov.com/public/servers-com-test:latest
-    steps:
-      - name: Run rspec
-        run: bundle exec rspec
-
-
