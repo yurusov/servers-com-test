@@ -5,7 +5,8 @@
 require: rubocop-rspec
 
 Style/Documentation:
-  Exclude:
-    - 'spec/**/*'
-    - 'config/**/*'
+  Enabled: false
+  # Exclude:
+  #   - 'spec/**/*'
+  #   - 'config/**/*'
 

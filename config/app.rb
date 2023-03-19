@@ -4,5 +4,6 @@ require 'hanami'
 
 module ServersComTest
   class App < Hanami::App
+    config.actions.format :json
   end
 end

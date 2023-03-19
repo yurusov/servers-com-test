@@ -2,6 +2,9 @@
 
 module ServersComTest
   class Routes < Hanami::Routes
-    root { 'Hello from Hanami' }
+    get '/statistics/:ip_address', to: 'statistics.show'
+    get '/ip_addresses', to: 'ip_addresses.index'
+    post '/ip_addresses/:ip_address', to: 'ip_addresses.create'
+    delete '/ip_addresses/:ip_address', to: 'ip_addresses.destroy'
   end
 end

@@ -14,6 +14,7 @@ gem 'rake'
 gem 'pg'
 gem 'rom', '~> 5.3'
 gem 'rom-sql', '~> 3.6'
+gem 'sequel_pg'
 
 group :test do
   gem 'database_cleaner-sequel'
@@ -22,6 +23,7 @@ end
 group :development, :test do
   gem 'dotenv'
   gem 'rubocop'
+  gem 'rubocop-rake'
   gem 'rubocop-rspec'
 end
 
@@ -30,6 +32,7 @@ group :cli, :development do
 end
 
 group :cli, :development, :test do
+  gem 'awesome_print'
   gem 'hanami-rspec'
 end
 
