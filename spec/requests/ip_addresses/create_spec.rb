@@ -46,7 +46,6 @@ RSpec.describe 'POST /ip_addresses', type: %i[request database] do
     let(:ip_address) { 123412 }
 
     it 'returns 422 unprocessable' do
-      ap last_response
       expect(last_response).to be_unprocessable
     end
   end
