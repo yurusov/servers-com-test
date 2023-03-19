@@ -75,7 +75,7 @@ jobs:
       packages: write
 
     container:
-      image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ sha }}
+      image: harbor.yurusov.com/public/servers-com-test:${{ sha }}
     steps:
       - name: Run rspec
         run: bundle exec rspec
