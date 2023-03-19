@@ -73,8 +73,9 @@ jobs:
     permissions:
       contents: read
       packages: write
+
     container:
-      image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{sha}}
+      image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ sha }}
     steps:
       - name: Run rspec
         run: bundle exec rspec
