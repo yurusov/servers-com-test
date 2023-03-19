@@ -1,6 +1,9 @@
 FROM ruby:3.2.0-alpine as builder
 
-RUN apk add build-base
+RUN set -ex \
+  && apk add --no-cache \
+     build-base \
+     postgresql-dev
 COPY Gemfile* ./
 RUN bundle install
 
