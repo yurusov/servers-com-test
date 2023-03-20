@@ -1,0 +1,48 @@
+name: Tests
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+on:
+  workflow_run:
+    workflows: [Build]
+    types:
+      - completed
+
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: harbor.yurusov.com
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: public/servers-com-test
+  COMPOSE_FILE: ./spec/docker/docker-compose.yml
+
+
+jobs:
+  run-test-job:
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Login against a Docker registry except on PR
+      # https://github.com/docker/login-action
+      - name: Log into registry ${{ env.REGISTRY }}
+        uses: docker/login-action@49ed152c8eca782a232dede0303416e8f356c37b
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: robot$github
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Run services
+        uses: isbang/compose-action@v1.4.1
+        with:
+          compose-file: ${{ env.COMPOSE_FILE }}
+          services: |
+            db
+      - name: Run rspec
+        run: docker-compose run app bundle exec rspec
+
+
