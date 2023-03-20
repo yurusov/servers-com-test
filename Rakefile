@@ -3,7 +3,6 @@
 require 'hanami/rake_tasks'
 require 'rom/sql/rake_task'
 require 'sequel/db_tasks'
-require 'dotenv/load'
 
 task :environment do
   require_relative 'config/app'
@@ -17,4 +16,4 @@ namespace :db do
   end
 end
 
-Sequel::DbTasks.load!
+

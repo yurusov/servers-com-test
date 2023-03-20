@@ -14,8 +14,9 @@ services:
   app:
     restart: unless-stopped
     image: harbor.yurusov.com/public/servers-com-test:${TAG-main}
+    env_file:
+      - ../../.env.test
     depends_on:
       - db
-    environment:
-      - DATABASE_URL=postgres://postgres:postgres@db:5432/servers_com_test
+
 
