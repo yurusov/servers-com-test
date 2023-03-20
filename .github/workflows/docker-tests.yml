@@ -36,13 +36,10 @@ jobs:
           username: robot$github
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
-      - name: Run services
-        uses: isbang/compose-action@v1.4.1
-        with:
-          compose-file: ${{ env.COMPOSE_FILE }}
-          services: |
-            db
-      - name: Run rspec
-        run: docker-compose run app bundle exec rspec
+      - name: Start docker-compose and run rspec
+        run: |
+          docker-compose pull
+          docker-compose up -d db
+          docker-compose run app bundle exec rspec
 
 
