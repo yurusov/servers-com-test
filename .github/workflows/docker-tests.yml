@@ -17,6 +17,7 @@ env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: public/servers-com-test
   COMPOSE_FILE: ./spec/docker/docker-compose.yml
+  TAG: ${{ sha }}
 
 
 jobs:
@@ -38,5 +39,7 @@ jobs:
 
       - name: Start docker-compose and run rspec
         run: |
+          docker-compose up -d db
+          sleep 3
           docker-compose run app docker/wrap.sh rspec
 
