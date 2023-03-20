@@ -38,8 +38,5 @@ jobs:
 
       - name: Start docker-compose and run rspec
         run: |
-          docker-compose pull
-          docker-compose up -d db
-          docker-compose run app bundle exec rspec
-
+          docker-compose run app docker/wrap.sh rspec
 

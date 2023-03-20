@@ -14,6 +14,7 @@ gem 'rake'
 gem 'pg'
 gem 'rom', '~> 5.3'
 gem 'rom-sql', '~> 3.6'
+gem 'sequel-db_tasks', require: false
 gem 'sequel_pg'
 
 group :test do

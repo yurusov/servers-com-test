@@ -10,8 +10,13 @@ RUN bundle install
 FROM ruby:3.2.0-alpine as runner
 
 WORKDIR /app
-RUN apk add --no-cache postgresql-dev
+RUN apk add --no-cache \ 
+    postgresql-dev \
+    dumb-init
 COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
 COPY . .
 EXPOSE 2300
-CMD ["bundle", "exec", "hanami", "server", "--host", "0.0.0.0"]
+ENTRYPOINT ["/usr/bin/dumb-init", "-c", "--"]
+
+CMD ["/bin/sh", "-c", "/home/app/docker/start_app.sh"]
+

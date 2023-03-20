@@ -1,20 +1,21 @@
-version: "2.4"
+version: "3"
 
 services:
 
   db:
     restart: unless-stopped
     image: postgres:15
-    tmpfs: /tmp
+    tmpfs: 
+      - /tmp:size=100m
+      - /var/lib/postgresql/data
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
-    volumes: 
-      - /tmp:/var/lib/postgresql/data
 
   app:
     restart: unless-stopped
     image: harbor.yurusov.com/public/servers-com-test:${TAG-main}
+    depends_on:
+      - db
     environment:
       - DATABASE_URL=postgres://postgres:postgres@db:5432/servers_com_test
-
 
