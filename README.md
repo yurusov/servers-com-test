@@ -1,7 +1,6 @@
 # ServersComTest
 
 [![Build](https://github.com/yurusov/servers-com-test/actions/workflows/docker-build.yml/badge.svg)](https://github.com/yurusov/servers-com-test/actions/workflows/docker-build.yml)
-[![Tests](https://github.com/yurusov/servers-com-test/actions/workflows/docker-tests.yml/badge.svg)](https://github.com/yurusov/servers-com-test/actions/workflows/docker-tests.yml)
 
 
 
