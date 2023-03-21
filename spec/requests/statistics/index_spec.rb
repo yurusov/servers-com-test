@@ -14,5 +14,4 @@ RSpec.describe 'GET /statistics', type: %i[request database] do
   it 'returns json' do
     expect(last_response.content_type).to eq('application/json; charset=utf-8')
   end
-
 end

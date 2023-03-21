@@ -43,7 +43,7 @@ RSpec.describe 'POST /ip_addresses', type: %i[request database] do
   end
 
   context 'with invalid params' do
-    let(:ip_address) { 123412 }
+    let(:ip_address) { 123_412 }
 
     it 'returns 422 unprocessable' do
       expect(last_response).to be_unprocessable

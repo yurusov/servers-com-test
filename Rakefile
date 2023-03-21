@@ -14,5 +14,3 @@ namespace :db do
     ROM::SQL::RakeSupport.env = Hanami.app['persistence.config']
   end
 end
-
-

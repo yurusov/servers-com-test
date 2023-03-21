@@ -10,3 +10,9 @@ Style/Documentation:
   #   - 'spec/**/*'
   #   - 'config/**/*'
 
+Metrics/AbcSize:
+   CountRepeatedAttributes: false
+
+RSpec/FilePath:
+  Exclude:
+    - 'spec/actions/**/*'

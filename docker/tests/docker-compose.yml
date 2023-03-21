@@ -18,7 +18,4 @@ services:
       - DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL=true
     env_file:
       - ../../.env.test
-    depends_on:
-      - db
-
 

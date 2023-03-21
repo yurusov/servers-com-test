@@ -14,8 +14,7 @@ module ServersComTest
 
           ip_address = request.params[:ip_address]
 
-          resource = rom
-                     .relations[:ip_addresses]
+          resource = resources
                      .by_pk(ip_address)
                      .changeset(:update, { value: ip_address, enabled: false })
                      .commit
@@ -24,6 +23,12 @@ module ServersComTest
 
           response.status = 201
           response.body = resource.to_json
+        end
+
+        private
+
+        def resources
+          rom.relations[:ip_addresses]
         end
       end
     end

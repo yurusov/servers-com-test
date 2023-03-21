@@ -14,14 +14,9 @@ module ServersComTest
 
           ip_address = request.params[:ip_address]
 
-          resource = resources
-                     .by_pk(ip_address)
-                     .changeset(:update, { value: ip_address, enabled: true })
-                     .commit
+          resource = resources.by_pk(ip_address).changeset(:update, { value: ip_address, enabled: true }).commit
 
-          resource ||= resources
-                       .changeset(:create, { value: ip_address, enabled: true })
-                       .commit
+          resource ||= resources.changeset(:create, { value: ip_address, enabled: true }).commit
 
           response.status = 201
           response.body = resource.to_json
