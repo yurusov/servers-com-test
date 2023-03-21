@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe 'POST /ip_addresses', type: %i[request database] do
+RSpec.describe 'POST /ip_addresses/:ip_address', type: %i[request database] do
   let(:ip_addresses) { app['persistence.rom'].relations[:ip_addresses] }
   let(:request_headers) do
     { 'HTTP_ACCEPT' => 'application/json', 'CONTENT_TYPE' => 'application/json' }
@@ -11,7 +11,7 @@ RSpec.describe 'POST /ip_addresses', type: %i[request database] do
   end
 
   context 'with ipv4 address' do
-    let(:ip_address) { '127.0.0.1' }
+    let(:ip_address) { Factory.structs[:ip_address].value.to_s }
 
     it 'is successfully created' do
       expect(last_response).to be_created
@@ -27,7 +27,7 @@ RSpec.describe 'POST /ip_addresses', type: %i[request database] do
   end
 
   context 'with ipv6 address' do
-    let(:ip_address) { '0:0:0:0:0:0:0:1' }
+    let(:ip_address) { Factory.structs[:ip_address, :ipv6].value.to_s }
 
     it 'is successfully created' do
       expect(last_response).to be_created
@@ -47,6 +47,10 @@ RSpec.describe 'POST /ip_addresses', type: %i[request database] do
 
     it 'returns 422 unprocessable' do
       expect(last_response).to be_unprocessable
+    end
+
+    it 'returns errors object with invalid format' do
+      expect(last_response.body).to eq({ errors: { ip_address: ['is in invalid format'] } }.to_json)
     end
   end
 

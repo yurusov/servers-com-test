@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe ServersComTest::Actions::IpAddresses::Destroy, type: %i[request database] do
-  let(:params) { { ip_address: '127.0.0.1' } }
   let(:action) { described_class.new }
 
   context 'when ip address exists' do
-    before { app['persistence.rom'].relations[:ip_addresses].insert('value' => '127.0.0.1', 'enabled' => true) }
+    let(:params) { { ip_address: Factory[:ip_address].value.to_s } }
 
     it 'returns successful response' do
       response = action.call(params)
@@ -14,9 +13,20 @@ RSpec.describe ServersComTest::Actions::IpAddresses::Destroy, type: %i[request d
   end
 
   context 'when record does not exist' do
-    it 'raises 404 error' do
+    let(:params) { { ip_address: '127.0.0.1' } }
+
+    it 'returns 404 error' do
       response = action.call(params)
       expect(response).to be_not_found
+    end
+  end
+
+  context 'with wrong params' do
+    let(:params) { { ip_address: '127' } }
+
+    it 'returns 422 error' do
+      response = action.call(params)
+      expect(response).to be_unprocessable
     end
   end
 end

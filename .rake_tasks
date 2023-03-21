@@ -1,0 +1,7 @@
+db:clean
+db:create_migration
+db:migrate
+db:reset
+db:setup
+environment
+spec

@@ -13,8 +13,11 @@ gem 'rake'
 
 gem 'pg'
 gem 'rom', '~> 5.3'
+gem 'rom-factory'
 gem 'rom-sql', '~> 3.6'
 gem 'sequel_pg'
+
+gem 'net-ping'
 
 group :test do
   gem 'database_cleaner-sequel'
