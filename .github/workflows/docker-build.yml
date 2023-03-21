@@ -18,7 +18,7 @@ env:
   REGISTRY: harbor.yurusov.com
   # github.repository as <account>/<repo>
   IMAGE_NAME: public/servers-com-test
-  COMPOSE_FILE: ./spec/docker/docker-compose.yml
+  COMPOSE_FILE: ./docker/tests/docker-compose.yml
 
 
 jobs:
@@ -87,8 +87,6 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Start docker-compose and run rspec
-        env: 
-          TAG: ${{ env.LATEST_TAG }}
         run: |
           docker-compose up -d db
           sleep 3
