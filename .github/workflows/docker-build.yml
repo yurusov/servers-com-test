@@ -87,8 +87,6 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Start docker-compose and run rspec
-        env: 
-          DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: true
         run: |
           docker-compose up -d db
           sleep 3
