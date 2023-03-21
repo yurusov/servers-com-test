@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe ServersComTest::Actions::IpAddresses::Index do
-  let(:params) { Hash[] }
+  let(:params) { {} }
   let(:action) { described_class.new }
 
   it 'returns successful response' do

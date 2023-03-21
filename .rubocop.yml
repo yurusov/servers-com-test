@@ -2,7 +2,12 @@
 # `rubocop --auto-gen-config`
 # on 2023-03-17 18:51:13 UTC using RuboCop version 1.48.0.
 
-require: rubocop-rspec
+require: 
+  - rubocop-rake
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
 
 Style/Documentation:
   Enabled: false
