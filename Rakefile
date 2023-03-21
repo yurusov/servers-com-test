@@ -2,7 +2,6 @@
 
 require 'hanami/rake_tasks'
 require 'rom/sql/rake_task'
-require 'sequel/db_tasks'
 
 task :environment do
   require_relative 'config/app'
