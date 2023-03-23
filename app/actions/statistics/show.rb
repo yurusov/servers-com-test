@@ -5,7 +5,7 @@ module ServersComTest
     module Statistics
       class Show < ServersComTest::Action
         params do
-          required(:ip_address).value(:string,
+          required(:ip_address).value(:string, # TODO: custom type validation
                                       format?: Regexp.union(IPAddr::RE_IPV4ADDRLIKE, IPAddr::RE_IPV6ADDRLIKE_FULL))
           required(:from).value(:date_time)
           required(:to).value(:date_time)

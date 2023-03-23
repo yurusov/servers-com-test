@@ -5,7 +5,7 @@ module ServersComTest
     module IpAddresses
       class Create < ServersComTest::Action
         params do
-          required(:ip_address).value(:string,
+          required(:ip_address).value(:string, # TODO: custom type validation
                                       format?: Regexp.union(IPAddr::RE_IPV4ADDRLIKE, IPAddr::RE_IPV6ADDRLIKE_FULL))
         end
 
