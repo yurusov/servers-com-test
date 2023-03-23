@@ -7,4 +7,9 @@ Factory.define(:statistics) do |f|
   f.start_time { fake(:time, :between_dates, from: DateTime.now - 1, to: DateTime.now) }
   f.rtt { Random.rand(999) }
   f.failed false
+
+  f.trait :failed do |t|
+    t.failed true
+    t.rtt 0
+  end
 end
