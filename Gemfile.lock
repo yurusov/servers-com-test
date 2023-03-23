@@ -261,6 +261,7 @@ DEPENDENCIES
   hanami-rspec
   hanami-validations (~> 2.0)
   net-ping
+  parallel
   pg
   puma
   rack-test

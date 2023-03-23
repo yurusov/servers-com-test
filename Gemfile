@@ -18,6 +18,7 @@ gem 'rom-sql', '~> 3.6'
 gem 'sequel_pg'
 
 gem 'net-ping'
+gem 'parallel'
 
 group :test do
   gem 'database_cleaner-sequel'
