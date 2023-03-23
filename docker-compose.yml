@@ -2,6 +2,7 @@ version: "3"
 
 services:
 
+
   db:
     restart: unless-stopped
     image: postgres:15
@@ -11,11 +12,16 @@ services:
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
 
-  app:
+  app: &base
     restart: unless-stopped
-    image: harbor.yurusov.com/public/servers-com-test:${TAG-main}
+    # image: harbor.yurusov.com/public/servers-com-test:${TAG-main}
+    build: .
     environment:
+      - HANAMI_ENV=production
       - DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL=true
-      - HANAMI_ENV=test
+
+  worker: 
+    <<: *base
+    command: /bin/sh -c /app/docker/start_worker.sh
 
 

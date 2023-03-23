@@ -19,5 +19,5 @@ COPY . .
 EXPOSE 2300
 ENTRYPOINT ["/usr/bin/dumb-init", "-c", "--"]
 
-CMD ["/bin/sh", "-c", "/home/app/docker/start_app.sh"]
+CMD ["/bin/sh", "-c", "/app/docker/start_app.sh"]
 
