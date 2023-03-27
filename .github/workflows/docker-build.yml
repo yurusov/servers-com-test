@@ -136,4 +136,9 @@ jobs:
           docker load --input /tmp/docker-image.tar
           docker push -a ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
+      - name: Clean up
+        uses: geekyeggo/delete-artifact@v2
+        with:
+            name: docker-image
+
 
