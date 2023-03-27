@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -eo pipefail
+
+cd "$(dirname "$0")/.."
+
+./bin/bundle
+
+echo "\n==> App is now ready to go!"
+
