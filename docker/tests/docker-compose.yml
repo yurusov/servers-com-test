@@ -14,6 +14,8 @@ services:
   app:
     restart: unless-stopped
     image: harbor.yurusov.com/public/servers-com-test:${TAG-main}
+    volumes:
+      - ./coverage:/app/coverage
     environment:
       - DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL=true
       - HANAMI_ENV=test

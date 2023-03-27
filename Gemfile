@@ -22,6 +22,8 @@ gem 'parallel'
 
 group :test do
   gem 'database_cleaner-sequel'
+  gem 'simplecov'
+  gem 'simplecov-lcov'
 end
 
 group :development, :test do
