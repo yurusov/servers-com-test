@@ -14,50 +14,35 @@ module ServersComTest
         def handle(request, response)
           halt 422, { errors: request.params.errors }.to_json unless request.params.valid?
 
-          resources = scope(request.params[:ip_address], (request.params[:from]..request.params[:to]))
+          result = scope(request.params[:ip_address], (request.params[:from]..request.params[:to]))
 
-          halt 404, { errors: { statistics: :not_found } } if resources.empty?
+          halt 404, { errors: { statistics: :not_found } } unless result
 
           response.status = 201
-          response.body = serialize(resources).to_json
+          response.body = result.to_json
         end
 
         private
 
+        def relation # rubocop:disable Metrics/AbcSize
+          rom.relations[:statistics].select do
+            [
+              ip_address, integer.max(rtt).as(:rtt_max), integer.min(rtt).as(:rtt_min),
+              float.cast(integer.avg(rtt)).as(:rtt_avg), float.cast(integer.stddev_samp(rtt)).as(:rtt_deviation),
+              float.cast(integer.percentile_cont(0.5).within_group(rtt)).as(:rtt_median),
+              (
+                (float.cast(integer.count(bool.case(failed => 1, else: nil))) / float.cast(integer.count(id)))
+              ).as(:packet_loss)
+            ]
+          end
+        end
+
         def scope(ip, range)
-          rom
-            .relations[:statistics]
-            .select(:ip_address, :rtt, :failed)
+          relation
+            .group(:ip_address).order(:ip_address)
             .where { start_time.in(range) & ip_address.is(ip) }
             .to_a
-        end
-
-        def serialize(resources)
-          rtt = resources.map { |r| r[:rtt] }.delete_if(&:zero?)
-
-          {
-            ip_address: resources.first[:ip_address],
-            rtt_min: rtt.min,
-            rtt_max: rtt.max,
-            rtt_avg: mean(rtt),
-            rtt_median: median(rtt),
-            rtt_deviation: std_dev(rtt),
-            packet_loss: resources.count { |r| r[:failed] } / resources.size.to_f
-          }
-        end
-
-        def mean(arr)
-          arr.reduce(&:+) / arr.size
-        end
-
-        def median(arr)
-          sorted = arr.sort
-          (sorted[(arr.size - 1) / 2] + sorted[arr.size / 2]) / 2.0
-        end
-
-        def std_dev(arr)
-          sum_sqr = arr.map { |x| x * x }.reduce(&:+)
-          Math.sqrt((sum_sqr - (arr.size * mean(arr) * mean(arr))) / (arr.size - 1))
+            .first
         end
       end
     end

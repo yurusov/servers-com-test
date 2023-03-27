@@ -44,7 +44,6 @@ RSpec.describe 'GET /statistics/:ip_address', type: %i[request database] do
 
     it 'returns right data' do
       response_body = JSON.parse(last_response.body)
-      ap response_body
       expect(response_body).to eq(data)
     end
   end
@@ -53,6 +52,10 @@ RSpec.describe 'GET /statistics/:ip_address', type: %i[request database] do
     before { get "/statistics/#{ip_address}", params, request_headers }
 
     let(:params) { { from: DateTime.now - 7, to: DateTime.now } }
+
+    it 'stats are empty' do
+      expect(statistics.count).to eq 0
+    end
 
     it 'is returns 404' do
       expect(last_response).to be_not_found

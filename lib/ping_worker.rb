@@ -45,8 +45,8 @@ class PingWorker
   end
 
   def serialize_result(worker, timestamp)
-    duration = worker.duration || 0
-    { ip_address: worker.host.to_s, rtt: (duration * 1000).to_i, failed: !worker.exception.nil?, start_time: timestamp }
+    duration = (worker.duration * 1000).to_i if worker.duration
+    { ip_address: worker.host.to_s, rtt: duration, failed: !worker.exception.nil?, start_time: timestamp }
   end
 
   def commit_result(result)

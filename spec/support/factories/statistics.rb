@@ -10,6 +10,6 @@ Factory.define(:statistics) do |f|
 
   f.trait :failed do |t|
     t.failed true
-    t.rtt 0
+    t.rtt nil
   end
 end
