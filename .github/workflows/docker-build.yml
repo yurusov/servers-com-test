@@ -109,12 +109,20 @@ jobs:
       - name: Start docker-compose and run rubocop
         run: |
           docker-compose run app bundle exec rubocop
+          ls -a
 
-      - name: Add code coverage comment
-        uses: romeovs/lcov-reporter-action@v0.3.1 
+      - name: Create Coverage Badges
+        uses: jaywcjlove/coverage-badges-cli@main
         with:
-          lcov-file: ./coverage/lcov/servers-com-test.lcov
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          style: flat
+          source: coverage/.last_run.json
+          output: coverage/badges.svg
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./coverage
 
   push:
 
