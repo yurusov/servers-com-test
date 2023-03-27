@@ -84,6 +84,9 @@ jobs:
           docker load --input /tmp/myimage.tar
           docker image ls -a
 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Start docker-compose and run rspec
         run: |
           docker-compose up -d db
@@ -108,6 +111,9 @@ jobs:
         run: |
           docker load --input /tmp/myimage.tar
           docker image ls -a
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Start docker-compose and run rubocop
         run: |
