@@ -35,10 +35,10 @@ class PingWorker
   def ping
     ips = ip_addresses.select(:value).where(enabled: true).to_a # TODO: in batches
     Parallel.map(ips, in_threads: 20) do |ip|
-      worker = Net::Ping::ICMP.new(ip[:value], 0, 1)
+      worker = Net::Ping::ICMP.new(ip[:value].to_string, 0, 1)
       timestamp = DateTime.now
 
-      worker.ping
+      ip[:value].ipv6? ? worker.ping6 : worker.ping
 
       serialize_result(worker, timestamp)
     end
