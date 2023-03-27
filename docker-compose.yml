@@ -14,8 +14,7 @@ services:
 
   app: &base
     restart: unless-stopped
-    # image: harbor.yurusov.com/public/servers-com-test:${TAG-main}
-    build: .
+    image: harbor.yurusov.com/public/servers-com-test:${TAG-main}
     environment:
       - HANAMI_ENV=production
       - DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL=true

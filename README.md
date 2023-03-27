@@ -39,3 +39,8 @@ To start worker:
 $ ruby lib/ping_worker.rb   
 ```
 
+## Docker image
+
+You can pull last builded docker image from *harbor.yurusov.com/public/servers-com-test:main*
+or use	[docker-compose](./docker-compose.yml) instead
+
