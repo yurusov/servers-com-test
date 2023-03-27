@@ -84,6 +84,21 @@ jobs:
           sleep 3
           docker-compose run app docker/wrap.sh rspec
 
+      - name: Create Coverage Badges
+        if: github.ref == 'refs/heads/main'
+        uses: jaywcjlove/coverage-badges-cli@main
+        with:
+          style: flat
+          source: coverage/.last_run.json
+          output: coverage/badges.svg
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./coverage
+
   rubocop:
 
     runs-on: ubuntu-latest
@@ -109,20 +124,6 @@ jobs:
       - name: Start docker-compose and run rubocop
         run: |
           docker-compose run app bundle exec rubocop
-          ls -a
-
-      - name: Create Coverage Badges
-        uses: jaywcjlove/coverage-badges-cli@main
-        with:
-          style: flat
-          source: coverage/.last_run.json
-          output: coverage/badges.svg
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./coverage
 
   push:
 
