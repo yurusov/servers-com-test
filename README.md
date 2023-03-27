@@ -1,10 +1,11 @@
 # ServersComTest
 
 [![Build](https://github.com/yurusov/servers-com-test/actions/workflows/docker-build.yml/badge.svg)](https://github.com/yurusov/servers-com-test/actions/workflows/docker-build.yml)
+[![Depfu](https://img.shields.io/depfu/dependencies/github/yurusov/servers-com-test)](Gemfile)
+[![GitHub issues](https://img.shields.io/github/issues/yurusov/servers-com-test)](https://github.com/yurusov/servers-com-test/issues)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/yurusov/servers-com-test)
-![GitHub top language](https://img.shields.io/github/languages/top/yurusov/servers-com-test)
-![Depfu](https://img.shields.io/depfu/dependencies/github/yurusov/servers-com-test)
-![GitHub](https://img.shields.io/github/license/yurusov/servers-com-test)
+[![GitHub top language](https://img.shields.io/github/languages/top/yurusov/servers-com-test)](https://github.com/yurusov/servers-com-test/search?l=ruby)
+[![GitHub](https://img.shields.io/github/license/yurusov/servers-com-test)](LICENSE)
 
 
 This is an Hanami 2 application.
