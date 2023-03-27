@@ -4,7 +4,7 @@
 [![Coverage](https://yurusov.github.io/servers-com-test/badge.svg)](https://yurusov.github.io/servers-com-test/index.html)
 [![Depfu](https://img.shields.io/depfu/dependencies/github/yurusov/servers-com-test)](Gemfile)
 [![GitHub issues](https://img.shields.io/github/issues/yurusov/servers-com-test)](https://github.com/yurusov/servers-com-test/issues)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/yurusov/servers-com-test)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/yurusov/servers-com-test)](https://github.com/yurusov/servers-com-test/releases)
 [![GitHub top language](https://img.shields.io/github/languages/top/yurusov/servers-com-test)](https://github.com/yurusov/servers-com-test/search?l=ruby)
 [![GitHub](https://img.shields.io/github/license/yurusov/servers-com-test)](LICENSE)
 
