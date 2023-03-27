@@ -46,15 +46,15 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          outputs: type=docker,dest=/tmp/myimage.tar
+          outputs: type=docker,dest=/tmp/docker-image.tar
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: myimage
-          path: /tmp/myimage.tar
+          name: docker-image
+          path: /tmp/docker-image.tar
 
   rspec:
 
@@ -67,12 +67,12 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: myimage
+          name: docker-image
           path: /tmp
 
       - name: Load image
         run: |
-          docker load --input /tmp/myimage.tar
+          docker load --input /tmp/docker-image.tar
           docker image ls -a
 
       - name: Checkout repository
@@ -95,12 +95,12 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: myimage
+          name: docker-image
           path: /tmp
 
       - name: Load image
         run: |
-          docker load --input /tmp/myimage.tar
+          docker load --input /tmp/docker-image.tar
           docker image ls -a
 
       - name: Checkout repository
@@ -128,12 +128,12 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: myimage
+          name: docker-image
           path: /tmp
 
       - name: Load and push image
         run: |
-          docker load --input /tmp/myimage.tar
+          docker load --input /tmp/docker-image.tar
           docker push -a ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
 

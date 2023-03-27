@@ -10,6 +10,7 @@ module ServersComTest
     handle_exception IPAddr::InvalidAddressError => 422
     handle_exception StandardError => :handle_standard_error
 
+
     private
 
     def handle_standard_error(_request, response, exception)
@@ -18,3 +19,4 @@ module ServersComTest
     end
   end
 end
+``
