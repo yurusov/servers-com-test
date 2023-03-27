@@ -1,6 +1,7 @@
 # ServersComTest
 
 [![Build](https://github.com/yurusov/servers-com-test/actions/workflows/docker-build.yml/badge.svg)](https://github.com/yurusov/servers-com-test/actions/workflows/docker-build.yml)
+[![Coverage](https://yurusov.github.io/servers-com-test/badge.svg)](https://yurusov.github.io/servers-com-test/index.html)
 [![Depfu](https://img.shields.io/depfu/dependencies/github/yurusov/servers-com-test)](Gemfile)
 [![GitHub issues](https://img.shields.io/github/issues/yurusov/servers-com-test)](https://github.com/yurusov/servers-com-test/issues)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/yurusov/servers-com-test)
