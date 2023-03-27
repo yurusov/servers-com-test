@@ -1,0 +1,13 @@
+.env
+.env.*.local
+log/*
+.bundle/
+.yardoc/
+doc/
+docker-compose.yml
+Dockerfile
+README.md
+.rake_tasks
+.github/
+.gitignore
+
