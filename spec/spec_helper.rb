@@ -8,14 +8,17 @@ require 'hanami/prepare'
 require 'awesome_print'
 require 'rom-factory'
 require 'simplecov'
-require 'simplecov-lcov'
+require 'coverage/badge'
 
 require_relative 'support/rspec'
 require_relative 'support/requests'
 require_relative 'support/database_cleaner'
 
-SimpleCov::Formatter::LcovFormatter.config.report_with_single_file = true
-SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+                                                                 SimpleCov::Formatter::SimpleFormatter,
+                                                                 Coverage::Badge::Formatter
+                                                               ])
+
 SimpleCov.start
 
 Factory = ROM::Factory.configure do |config|

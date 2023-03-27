@@ -21,9 +21,9 @@ gem 'net-ping'
 gem 'parallel'
 
 group :test do
+  gem 'coverage-badge'
   gem 'database_cleaner-sequel'
   gem 'simplecov'
-  gem 'simplecov-lcov'
 end
 
 group :development, :test do
