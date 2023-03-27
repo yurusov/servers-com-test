@@ -134,6 +134,6 @@ jobs:
       - name: Load and push image
         run: |
           docker load --input /tmp/myimage.tar
-          docker push `docker image ls -a --quiet`
+          docker push -a ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
 
