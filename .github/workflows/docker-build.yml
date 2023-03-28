@@ -11,7 +11,6 @@ env:
   REGISTRY: harbor.yurusov.com
   IMAGE_NAME: public/servers-com-test
   COMPOSE_FILE: ./docker/tests/docker-compose.yml
-  TAG: ${{ github.ref_name }}
 
 
 jobs:
@@ -79,7 +78,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Calculate short sha
+        uses: benjlevesque/short-sha@v2.2
+        id: short-sha   
+
       - name: Start docker-compose and run rspec
+        env:
+          TAG: ${{ steps.short-sha.outputs.sha }}      
         run: |
           docker-compose up -d db
           sleep 3
@@ -114,7 +119,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Calculate short sha
+        uses: benjlevesque/short-sha@v2.2
+        id: short-sha
+
       - name: Start docker-compose and run rubocop
+        env:
+          TAG: ${{ steps.short-sha.outputs.sha }}   
         run: |
           docker-compose run app bundle exec rubocop
 
