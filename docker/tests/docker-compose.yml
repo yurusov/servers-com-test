@@ -13,7 +13,7 @@ services:
 
   app:
     restart: unless-stopped
-    image: harbor.yurusov.com/public/servers-com-test:${TAG-main}
+    image: harbor.yurusov.com/public/servers-com-test:${TAG-latest}
     volumes:
       - ../../coverage:/app/coverage
     environment:

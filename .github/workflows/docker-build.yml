@@ -11,6 +11,7 @@ env:
   REGISTRY: harbor.yurusov.com
   IMAGE_NAME: public/servers-com-test
   COMPOSE_FILE: ./docker/tests/docker-compose.yml
+  TAG: ${{ github.ref_name }}
 
 
 jobs:
