@@ -1,4 +1,4 @@
-FROM ruby:3.2.0-alpine as builder
+FROM ruby:3.2.2-alpine as builder
 
 RUN set -ex \
   && apk add --no-cache \
@@ -7,7 +7,7 @@ RUN set -ex \
 COPY Gemfile* ./
 RUN bundle install
 
-FROM ruby:3.2.0-alpine as runner
+FROM ruby:3.2.2-alpine as runner
 
 WORKDIR /app
 RUN apk add --no-cache \ 
