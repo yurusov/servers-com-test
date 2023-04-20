@@ -27,7 +27,7 @@ RSpec.describe 'POST /ip_addresses/:ip_address', type: %i[request database] do
   end
 
   context 'with ipv6 address' do
-    let(:ip_address) { Factory.structs[:ip_address, :ipv6].value.to_s }
+    let(:ip_address) { Factory.structs[:ip_address, :ipv6].value.to_i }
 
     it 'is successfully created' do
       expect(last_response).to be_created

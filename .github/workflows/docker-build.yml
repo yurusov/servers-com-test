@@ -153,7 +153,13 @@ jobs:
           docker load --input /tmp/docker-image.tar
           docker push -a ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      - name: Clean up
+
+  cleanup:
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs: [rspec, rubocop, push]
+    steps:
+      - name: Delete artifact
         uses: geekyeggo/delete-artifact@v2
         with:
             name: docker-image
