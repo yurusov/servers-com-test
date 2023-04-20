@@ -51,3 +51,7 @@ $ ruby lib/ping_worker.rb
 You can pull last builded docker image from *harbor.yurusov.com/public/servers-com-test:main*
 or use	[docker-compose](./docker-compose.yml) instead
 
+
+## Additional info
+
+Original task(in russian) can be found [here](TASK.md)
