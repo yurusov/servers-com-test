@@ -76,7 +76,7 @@
           null
         ]
       },
-      "/app/lib/servers_com_test/persistence/relations/ip_addresses.rb": {
+      "/app/app/relations/ip_addresses.rb": {
         "lines": [
           null,
           null,
@@ -84,17 +84,15 @@
           1,
           1,
           1,
-          1,
           null,
           1,
           1,
-          null,
           null,
           null,
           null
         ]
       },
-      "/app/lib/servers_com_test/persistence/relations/statistics.rb": {
+      "/app/app/relations/statistics.rb": {
         "lines": [
           null,
           null,
@@ -104,13 +102,11 @@
           1,
           1,
           1,
-          1,
           null,
           null,
           null,
           1,
           1,
-          null,
           null,
           null,
           null
@@ -364,6 +360,6 @@
         ]
       }
     },
-    "timestamp": 1682004902
+    "timestamp": 1682008754
   }
 }
