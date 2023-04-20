@@ -16,8 +16,8 @@ Hanami.app.register_provider :persistence, namespace: true do
     config = target['persistence.config']
 
     config.auto_registration(
-      target.root.join('lib/servers_com_test/persistence'),
-      namespace: 'ServersComTest::Persistence'
+      target.root.join('app'),
+      namespace: Hanami.app.namespace.to_s
     )
 
     register 'rom', ROM.container(config)

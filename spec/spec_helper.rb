@@ -10,7 +10,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 
 SimpleCov.start do
   add_group 'Actions', 'app/actions'
-  add_group 'Relations', 'lib/servers_com_test/persistence/relations'
+  add_group 'Relations', 'app/relations'
   add_group 'Tasks', 'lib/tasks'
   add_filter '/spec/'
 end
