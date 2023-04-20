@@ -84,13 +84,13 @@ jobs:
 
       - name: Start docker-compose and run rspec
         env:
-          TAG: ${{ steps.short-sha.outputs.sha }}      
+          TAG: ${{ steps.short-sha.outputs.sha }}
         run: |
           docker-compose up -d db
           sleep 3
           docker-compose run app docker/wrap.sh rspec
 
-      - name: Deploy
+      - name: Deploy tests results
         if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -125,7 +125,7 @@ jobs:
 
       - name: Start docker-compose and run rubocop
         env:
-          TAG: ${{ steps.short-sha.outputs.sha }}   
+          TAG: ${{ steps.short-sha.outputs.sha }}
         run: |
           docker-compose run app bundle exec rubocop
 
@@ -163,5 +163,3 @@ jobs:
         uses: geekyeggo/delete-artifact@v2
         with:
             name: docker-image
-
-
